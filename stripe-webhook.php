@@ -59,9 +59,9 @@ function handle_stripe_webhook(WP_REST_Request $request) {
                 'post_title' => 'New ' . $cycle . ' subcription by #' . $customer_id,
                 'post_content' => '',
                 'post_name' => $stripe_invoice_id,
-                'post_type' => 'tm_cbex_accs',
+                'post_type' => 'cpt_accs',
                 'post_status' => 'publish',
-                'post_author' => $user_id
+                'post_author' => $user_id->ID ?? $user->ID,
             ]);
 
             if (!is_wp_error($sub_id) || $sub_id == 0){
